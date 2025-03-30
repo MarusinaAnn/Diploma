@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: postgres1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 7h44er8j5S
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_NAME: postgres1
+      DB_USER: postgres
+      DB_PASSWORD: 7h44er8j5S
+      DB_HOST: db
+      DB_PORT: 5432
+      SECRET_KEY: your-secret-key
+      DEBUG: "True"
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+
+  frontend:
+  image: node:18
+  working_dir: /app
+  volumes:
+    - ./frontend:/app
+    - /app/node_modules    # <-- обязательно, чтобы не тащить локальные node_modules внутрь
+  command: sh -c "npm install && npm start"
+  ports:
+    - "3000:3000"
+
+
+
+volumes:
+  db-data:
