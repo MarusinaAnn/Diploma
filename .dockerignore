@@ -30,3 +30,4 @@ __pycache__/
 
 # Media
 media
+frontend/node_modules
