@@ -4,6 +4,7 @@ from rest_framework.routers import DefaultRouter
 from backend.storage.views import FileViewSet
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
 router = DefaultRouter()
 router.register(r'files', FileViewSet, basename='file')
@@ -15,3 +16,7 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
+    path('', TemplateView.as_view(template_name='index.html')),
+]
