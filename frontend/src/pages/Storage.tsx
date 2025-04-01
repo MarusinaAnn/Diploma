@@ -99,12 +99,27 @@ const Storage = () => {
   const formatDate = (dateString?: string | null) =>
     dateString ? new Date(dateString).toLocaleString("ru-RU") : "—";
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => toast.success("Ссылка скопирована ✅"))
-      .catch(() => toast.error("Не удалось скопировать ссылку"));
+  const copyToClipboard = async (text: string) => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+      toast.success("Ссылка скопирована ✅");
+    } catch {
+      toast.error("Не удалось скопировать ссылку");
+    }
   };
+  
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 

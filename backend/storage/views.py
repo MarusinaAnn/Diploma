@@ -48,6 +48,11 @@ class FileViewSet(viewsets.ModelViewSet):
     queryset = UserFile.objects.all()
     permission_classes = [IsAuthenticated]
 
+    def get_permissions(self):
+        if self.action == 'access_download':
+            return [permissions.AllowAny()]
+        return super().get_permissions()
+
     def get_queryset(self):
         user = self.request.user
         if user.is_superuser:
