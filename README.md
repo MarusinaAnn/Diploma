@@ -179,7 +179,7 @@ Allows users to upload, download, rename, delete and share files through a simpl
 #### Backend
 
 ```bash
-git clone https://github.com/your-username/mycloud.git
+git clone https://github.com/MarusinaAnn/Diploma.git
 cd mycloud
 python -m venv venv
 source venv/bin/activate
