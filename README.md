@@ -4,6 +4,13 @@
 > Приложение позволяет пользователям загружать, скачивать, переименовывать, удалять файлы и управлять ими через удобный интерфейс.  
 > Включает интерфейс администратора с управлением пользователями и статистикой.
 
+
+---
+
+### 🌐 Развёрнутое приложение
+
+👉 [http://194.67.84.156/](http://194.67.84.156/)
+
 ---
 
 ## 🇷🇺 Описание (Russian)
@@ -49,8 +56,8 @@
 ### Backend
 
 ```bash
-git clone https://github.com/your-username/mycloud.git
-cd mycloud
+git clone https://github.com/MarusinaAnn/Diploma/backend.git
+cd backend
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -180,7 +187,7 @@ Allows users to upload, download, rename, delete and share files through a simpl
 
 ```bash
 git clone https://github.com/MarusinaAnn/Diploma.git
-cd mycloud
+cd backend
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
