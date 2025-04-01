@@ -16,12 +16,9 @@ services:
     build: .
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
-      DB_NAME: postgres1
-      DB_USER: postgres
-      DB_PASSWORD: 7h44er8j5S
-      DB_HOST: db
-      DB_PORT: 5432
       SECRET_KEY: your-secret-key
       DEBUG: "True"
     ports:
