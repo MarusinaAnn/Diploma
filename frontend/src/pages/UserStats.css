@@ -55,3 +55,17 @@
   border-top: 4px solid #cadde4;
 }
 
+/* Адаптивность таблицы на мобилках */
+.stats-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Обязательно: скрываем горизонтальный скролл на десктопе */
+@media (min-width: 768px) {
+  .stats-table-wrapper {
+    overflow-x: unset;
+  }
+}
+
+
